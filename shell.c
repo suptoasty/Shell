@@ -52,6 +52,9 @@ int main(void) {
 		fflush(stdout);	//Dr. Arsu, what does flush do??? Flush command input output so the OSH> isn't included in with user input???
 		
 		gets(string); //take in user input
+		if(string[0] == '\0') continue; //prevent empty line + enter from crashing shell 
+		if(string[0] == '!' && string[1] == '\0') continue; //prevent a single ! + enter from crashing shell
+		
 		//check for & to tell if user wants to execute process in the background
 		for(int i = 0; i < strlen(string); i++) {
 			//if found set should_wait to false value of 1 and remove the & from the command before exec
