@@ -51,7 +51,8 @@ int main(void) {
 		}
 		fflush(stdout);	//Dr. Arsu, what does flush do??? Flush command input output so the OSH> isn't included in with user input???
 		
-		gets(string); //take in user input
+		fgets(string, MAX_LINE, stdin); //take in user input
+		string[strlen(string)-1] = '\0'; //remove \n character from fgets
 		if(string[0] == '\0') continue; //prevent empty line + enter from crashing shell 
 		if(string[0] == '!' && string[1] == '\0') continue; //prevent a single ! + enter from crashing shell
 		
